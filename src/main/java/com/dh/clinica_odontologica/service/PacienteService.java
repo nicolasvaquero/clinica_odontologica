@@ -1,14 +1,18 @@
 package com.dh.clinica_odontologica.service;
 
 
-import com.dh.clinica_odontologica.entity.Paciente;
 
-import java.util.List;
+
+import com.dh.clinica_odontologica.entity.PacienteDTO;
+
+
+import java.util.Set;
 
 public interface PacienteService {
-    Paciente agregar (Paciente paciente);
-    Paciente buscarPorId (Long id);
-    List<Paciente> buscarTodos();
+    void agregar (PacienteDTO pacienteDTO);
+    PacienteDTO buscarPorId (Long id);
+    Set<PacienteDTO> buscarTodos();
     void borrar (Long id);
-    void actualizar (Paciente domicilio);
+    void actualizar (PacienteDTO pacienteDTO);
+
 }

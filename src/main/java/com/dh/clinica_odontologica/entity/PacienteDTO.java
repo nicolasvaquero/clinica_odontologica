@@ -1,17 +1,24 @@
 package com.dh.clinica_odontologica.entity;
 
-public class PacientoDTO {
-    private Long id;
-    private  String nombre;
-    private  String apellido;
+public class PacienteDTO {
 
-    public PacientoDTO() {
+    private Long id;
+    private String nombre;
+    private String apellido;
+    private String numeroMatricula;
+
+    private Domicilio domicilio;
+
+
+    public PacienteDTO() {
     }
 
-    public PacientoDTO(Long id, String nombre, String apellido) {
+    public PacienteDTO(Long id, String nombre, String apellido, String numeroMatricula, Domicilio domicilio) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.numeroMatricula = numeroMatricula;
+        this.domicilio = domicilio;
     }
 
     public Long getId() {
@@ -36,5 +43,13 @@ public class PacientoDTO {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getNumeroMatricula() {
+        return numeroMatricula;
+    }
+
+    public void setNumeroMatricula(String numeroMatricula) {
+        this.numeroMatricula = numeroMatricula;
     }
 }

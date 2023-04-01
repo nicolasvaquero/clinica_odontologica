@@ -1,50 +1,72 @@
 package com.dh.clinica_odontologica.service;
 
 import com.dh.clinica_odontologica.entity.Paciente;
-import com.dh.clinica_odontologica.repository.DomicilioRepository;
+import com.dh.clinica_odontologica.entity.PacienteDTO;
 import com.dh.clinica_odontologica.repository.PacienteRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class PacienteServiceImpl implements PacienteService {
 
 
-    private PacienteRepository pacienteRepository;
-
-    private DomicilioRepository domicilioRepository;
+    private final PacienteRepository pacienteRepository;
 
     @Autowired
-    public PacienteServiceImpl(PacienteRepository pacienteRepository, DomicilioRepository domicilioRepository) {
+    ObjectMapper mapper;
+
+
+    @Autowired
+    public PacienteServiceImpl(PacienteRepository pacienteRepository) {
         this.pacienteRepository = pacienteRepository;
-        this.domicilioRepository = domicilioRepository;
+    }
+
+
+    @Override
+    public void agregar(PacienteDTO pacienteDTO) {
+        Paciente paciente = mapper.convertValue(pacienteDTO,Paciente.class);
+        pacienteRepository.save(paciente);
+    }
+
+    private void guardar(PacienteDTO pacienteDTO){
+        Paciente paciente = mapper.convertValue(pacienteDTO,Paciente.class);
+        pacienteRepository.save(paciente);
     }
 
     @Override
-    public Paciente agregar(Paciente paciente) {
-        return pacienteRepository.save(paciente);
+    public PacienteDTO buscarPorId(Long id) {
+        Paciente paciente = this.pacienteRepository.findById(id).orElse(null);
+        PacienteDTO pacienteDTO= null;
+        if(paciente!=null){
+            pacienteDTO = mapper.convertValue(paciente,PacienteDTO.class);
+        }
+        return pacienteDTO;
     }
 
     @Override
-    public Paciente buscarPorId(Long id) {
-        return pacienteRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<Paciente> buscarTodos() {
-        return pacienteRepository.findAll();
+    public Set<PacienteDTO> buscarTodos() {
+        List<Paciente> pacientes= this.pacienteRepository.findAll();
+        Set<PacienteDTO> pacientesDTO = new HashSet<>();
+        for(Paciente paciente:pacientes){
+            pacientesDTO.add(mapper.convertValue(paciente,PacienteDTO.class));
+        }
+        return pacientesDTO;
     }
 
     @Override
     public void borrar(Long id) {
-        pacienteRepository.delete(buscarPorId(id));
-
+        this.pacienteRepository.deleteById(id);
     }
 
     @Override
-    public void actualizar(Paciente paciente) {
-        pacienteRepository.save(paciente);
+    public void actualizar(PacienteDTO pacienteDTO) {
+        guardar(pacienteDTO);
     }
 }
+
