@@ -1,47 +1,54 @@
 package com.dh.clinica_odontologica.controller;
 
-import com.dh.clinica_odontologica.entity.Paciente;
-import com.dh.clinica_odontologica.service.DomicilioServiceImpl;
+
+import com.dh.clinica_odontologica.entity.PacienteDTO;
 import com.dh.clinica_odontologica.service.PacienteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
-@RequestMapping("/paciente")
+@RequestMapping("/pacientes")
+
 public class PacienteController {
 
-    private final PacienteServiceImpl pacienteService;
-    private final DomicilioServiceImpl domicilioService;
+
+    PacienteServiceImpl pacienteService;
 
     @Autowired
-    public PacienteController(PacienteServiceImpl pacienteService, DomicilioServiceImpl domicilioService) {
+    public PacienteController(PacienteServiceImpl pacienteService) {
         this.pacienteService = pacienteService;
-        this.domicilioService = domicilioService;
     }
 
     @PostMapping("/")
-    public Paciente agregar (@RequestBody Paciente paciente){
-        return pacienteService.agregar(paciente);
+    public ResponseEntity<?> crearPaciente(@RequestBody PacienteDTO pacienteDTO){
+        pacienteService.agregar(pacienteDTO);
+
+        return ResponseEntity.ok(HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
-    public Paciente buscarPorId (@PathVariable("id") Long id){
+    public PacienteDTO buscarPaciente (@PathVariable Long id){
         return pacienteService.buscarPorId(id);
     }
 
     @GetMapping("/")
-    public List<Paciente> buscarTodos(){
+    public Collection<PacienteDTO> listarPacientes(){
         return pacienteService.buscarTodos();
     }
 
     @PutMapping("/")
-    public void actualizar(@RequestBody Paciente paciente){
-        pacienteService.actualizar(paciente);
+    public ResponseEntity<?> actualizarPaciente(@RequestBody PacienteDTO pacienteDTO){
+        pacienteService.actualizar(pacienteDTO);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Long id){
+    public ResponseEntity<?> eliminarPaciente(@PathVariable("id") long id){
         pacienteService.borrar(id);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 }

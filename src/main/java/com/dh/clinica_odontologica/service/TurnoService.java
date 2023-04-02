@@ -1,14 +1,16 @@
 package com.dh.clinica_odontologica.service;
 
 import com.dh.clinica_odontologica.entity.Turno;
+import com.dh.clinica_odontologica.entity.TurnoDTO;
 
 import java.util.List;
+import java.util.Set;
 
 
 public interface TurnoService {
-    Turno agregar (Turno turno);
-    Turno buscarPorId (Long id);
-    List<Turno> buscarTodos();
+    void agregar (TurnoDTO turnoDTO);
+    TurnoDTO buscarPorId (Long id);
+    Set<TurnoDTO> buscarTodos();
     void borrar (Long id);
-    void actualizar (Turno turno);
+    void actualizar (TurnoDTO turnoDTO);
 }

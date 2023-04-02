@@ -1,41 +1,67 @@
 package com.dh.clinica_odontologica.service;
 
 import com.dh.clinica_odontologica.entity.Domicilio;
+import com.dh.clinica_odontologica.entity.DomicilioDTO;
 import com.dh.clinica_odontologica.repository.DomicilioRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class DomicilioServiceImpl implements DomicilioService {
 
-    @Autowired
+
     private DomicilioRepository domicilioRepository;
 
+    @Autowired
+    public DomicilioServiceImpl(DomicilioRepository domicilioRepository) {
+        this.domicilioRepository = domicilioRepository;
+    }
+    @Autowired
+    ObjectMapper mapper;
 
+    private void guardar(DomicilioDTO domicilioDTO){
+        Domicilio domicilio = mapper.convertValue(domicilioDTO, Domicilio.class);
+        domicilioRepository.save(domicilio);
+    }
     @Override
-    public Domicilio agregar(Domicilio domicilio) {
-        return domicilioRepository.save(domicilio);
+    public void agregar(DomicilioDTO domicilio) {
+        guardar(domicilio);
     }
 
     @Override
-    public Domicilio buscarPorId(Long id) {
-        return domicilioRepository.findById(id).orElse(null);
+    public DomicilioDTO buscarPorId(Long id) {
+        Domicilio domicilio = this.domicilioRepository.findById(id).orElse(null);
+        DomicilioDTO domicilioDTO= null;
+        if(domicilio!=null){
+            domicilioDTO = mapper.convertValue(domicilioDTO,DomicilioDTO.class);
+        }
+        return domicilioDTO;
     }
 
     @Override
-    public List<Domicilio> buscarTodos() {
-        return domicilioRepository.findAll();
+    public Set<DomicilioDTO> buscarTodos() {
+        List<Domicilio> domicilios= this.domicilioRepository.findAll();
+        Set<DomicilioDTO> domicilioDTOS = new HashSet<>();
+        for(Domicilio domicilio:domicilios){
+            domicilioDTOS.add(mapper.convertValue(domicilio,DomicilioDTO.class));
+        }
+        return domicilioDTOS;
     }
 
     @Override
     public void borrar(Long id) {
-        domicilioRepository.delete(buscarPorId(id));
+        domicilioRepository.deleteById(id);
     }
 
     @Override
-    public void actualizar(Domicilio domicilio) {
-        domicilioRepository.save(domicilio);
+    public void actualizar(DomicilioDTO domicilioDTO) {
+        guardar(domicilioDTO);
     }
+
+
 }

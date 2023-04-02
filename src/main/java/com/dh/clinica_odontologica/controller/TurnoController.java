@@ -1,51 +1,53 @@
 package com.dh.clinica_odontologica.controller;
 
 
-import com.dh.clinica_odontologica.entity.Turno;
-import com.dh.clinica_odontologica.service.OdontologoServiceImpl;
-import com.dh.clinica_odontologica.service.PacienteServiceImpl;
+import com.dh.clinica_odontologica.entity.TurnoDTO;
 import com.dh.clinica_odontologica.service.TurnoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
-@RequestMapping("/turno")
+@RequestMapping("/turnos")
 public class TurnoController {
-
-    private final TurnoServiceImpl turnoService;
-    private final PacienteServiceImpl pacienteService;
-    private final OdontologoServiceImpl odontologoService;
-
+    TurnoServiceImpl turnoService;
     @Autowired
-    public TurnoController(PacienteServiceImpl pacienteService, TurnoServiceImpl turnoService, OdontologoServiceImpl odontologoService) {
-        this.pacienteService = pacienteService;
+    public TurnoController(TurnoServiceImpl turnoService) {
         this.turnoService = turnoService;
-        this.odontologoService = odontologoService;
     }
+
 
     @PostMapping("/")
-    public Turno agregar (@RequestBody Turno turno){
-        return turnoService.agregar(turno);
+
+
+    public ResponseEntity<?> crearTurno(@RequestBody TurnoDTO turnoDTO){
+        turnoService.agregar(turnoDTO);
+
+        return ResponseEntity.ok(HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
-    public Turno buscarPorId (@PathVariable("id") Long id){
+    public TurnoDTO buscarTurno (@PathVariable Long id){
         return turnoService.buscarPorId(id);
     }
 
     @GetMapping("/")
-    public List<Turno> buscarTodos(){
+    public Collection<TurnoDTO> listarTurno(){
         return turnoService.buscarTodos();
     }
 
     @PutMapping("/")
-    public void actualizar(@RequestBody Turno turno){
-        turnoService.actualizar(turno);
+    public ResponseEntity<?> actualizarTurno(@RequestBody TurnoDTO turnoDTO){
+        turnoService.actualizar(turnoDTO);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Long id){
+    public ResponseEntity<?> eliminarTurno(@PathVariable("id") long id){
         turnoService.borrar(id);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 }

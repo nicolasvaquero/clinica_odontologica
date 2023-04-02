@@ -21,6 +21,14 @@ public class PacienteDTO {
         this.domicilio = domicilio;
     }
 
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(Domicilio domicilio) {
+        this.domicilio = domicilio;
+    }
+
     public Long getId() {
         return id;
     }

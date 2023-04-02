@@ -1,18 +1,17 @@
 package com.dh.clinica_odontologica.controller;
 
-import com.dh.clinica_odontologica.entity.Domicilio;
+import com.dh.clinica_odontologica.entity.DomicilioDTO;
 import com.dh.clinica_odontologica.service.DomicilioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
-@RequestMapping("/domicilio")
-
+@RequestMapping("/domicilios")
 public class DomicilioController {
-
-
     private final DomicilioServiceImpl domicilioService;
 
     @Autowired
@@ -20,28 +19,34 @@ public class DomicilioController {
         this.domicilioService = domicilioService;
     }
 
+
+
     @PostMapping("/")
-    public Domicilio agregar (@RequestBody Domicilio domicilio){
-        return domicilioService.agregar(domicilio);
+    public ResponseEntity<?> crearDomicilio(@RequestBody DomicilioDTO domicilioDTO){
+        domicilioService.agregar(domicilioDTO);
+
+        return ResponseEntity.ok(HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
-    public Domicilio buscarPorId (@PathVariable("id") Long id){
+    public DomicilioDTO buscarDomicilio (@PathVariable Long id){
         return domicilioService.buscarPorId(id);
     }
 
     @GetMapping("/")
-    public List<Domicilio> buscarTodos(){
+    public Collection<DomicilioDTO> listarDomicilios(){
         return domicilioService.buscarTodos();
     }
 
     @PutMapping("/")
-    public void actualizar(@RequestBody Domicilio domicilio){
-        domicilioService.actualizar(domicilio);
+    public ResponseEntity<?> actualizarDomicilio(@RequestBody DomicilioDTO domicilioDTO){
+        domicilioService.actualizar(domicilioDTO);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Long id){
+    public ResponseEntity<?> eliminarOdontologo(@PathVariable("id") long id){
         domicilioService.borrar(id);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
-
 }

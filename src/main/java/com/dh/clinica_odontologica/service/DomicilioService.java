@@ -1,14 +1,16 @@
 package com.dh.clinica_odontologica.service;
 
-import com.dh.clinica_odontologica.entity.Domicilio;
+import com.dh.clinica_odontologica.entity.DomicilioDTO;
 
-import java.util.List;
+
+import java.util.Set;
 
 
 public interface DomicilioService {
-    Domicilio agregar (Domicilio domicilio);
-    Domicilio buscarPorId (Long id);
-    List<Domicilio> buscarTodos();
+    void agregar (DomicilioDTO domicilio);
+    DomicilioDTO buscarPorId (Long id);
+    Set<DomicilioDTO> buscarTodos();
     void borrar (Long id);
-    void actualizar (Domicilio domicilio);
+    void actualizar (DomicilioDTO domicilioDTO);
+
 }
