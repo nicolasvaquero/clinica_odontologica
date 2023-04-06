@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes</title>
+    <link rel="stylesheet" href="./style/pacientes.css">
+</head>
+<body>
+
+    <form action="#" method="POST" id="addPaciente">
+		<h2>Agregar paciente</h2>
+		<label for="nombre">Nombre:</label>
+		<input type="text" id="nombre" name="nombre" required>
+
+		<label for="apellido">Apellido:</label>
+		<input type="text" id="apellido" name="apellido" required>
+
+		<label for="dni">DNI:</label>
+	    <input type="number" id="dni" name="dni" required>
+
+		<label for="calle">Calle:</label>
+		<input type="text" id="calle" name="calle" required>
+
+		<label for="numero">Numero:</label>
+		<input type="number" id="numero" name="numero" required>
+		
+		<label for="localidad">Localidad:</label>
+		<input type="text" id="localidad" name="localidad" required>
+
+		<label for="provincia">Provincia:</label>
+		<input type="text" id="provincia" name="provincia" required>
+
+        <label for="fecha_alta">Fecha de alta:</label>
+		<input type="date" id="fecha_alta" name="fecha_alta" required>
+
+		<input type="submit" value="Agregar paciente" id="btn_guardar">
+	</form>
+
+	<!-- Tabla de pacientes -->
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Domicilio</th>
+				<th>DNI</th>
+				<th>Fecha de alta</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- Aquí se mostrarán los pacientes existentes -->
+		</tbody>
+	</table>
+
+<script src="./js/addPaciente.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align: center;
+    color: #003366;
+    margin-top: 40px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+input[type="text"], input[type="number"], input[type="date"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+input[type="submit"]:hover {
+    background-color: #185f8b;
+    transform: scale(1.05);
+}
+table {
+    margin: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+th {
+    background-color: #003366;
+    color: #fff;
+}
+tr:hover {
+    background-color: #f2f2f2;
+}
+.actions {
+    display: flex;
+    justify-content: space-around;
+}
+.edit, .delete {
+    padding: 5px 10px;
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.edit:hover, .delete:hover {
+    background-color: #185f8b;
+    transform: scale(1.05);
+}

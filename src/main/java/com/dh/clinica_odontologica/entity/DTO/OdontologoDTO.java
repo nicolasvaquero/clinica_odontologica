@@ -1,28 +1,22 @@
-package com.dh.clinica_odontologica.entity;
+package com.dh.clinica_odontologica.entity.DTO;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 
+import com.dh.clinica_odontologica.entity.Turno;
 
 import java.util.Set;
 
-@Entity
-@Table(name = "Odontologos")
-public class Odontologo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+public class OdontologoDTO {
     private Long id;
     private String numeroMatricula;
     private String nombre;
     private String apellido;
-    @OneToMany(mappedBy = "odontologo")
-    @JsonIgnore
+
     private Set<Turno> turnos;
 
-    public Odontologo() {
+    public OdontologoDTO() {
     }
 
-    public Odontologo(Long id, String numeroMatricula, String nombre, String apellido, Set<Turno> turnos) {
+    public OdontologoDTO(Long id, String numeroMatricula, String nombre, String apellido, Set<Turno> turnos) {
         this.id = id;
         this.numeroMatricula = numeroMatricula;
         this.nombre = nombre;
@@ -30,8 +24,7 @@ public class Odontologo {
         this.turnos = turnos;
     }
 
-
-    public Odontologo(String numeroMatricula, String nombre, String apellido) {
+    public OdontologoDTO(String numeroMatricula, String nombre, String apellido) {
         this.numeroMatricula = numeroMatricula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -77,3 +70,5 @@ public class Odontologo {
         this.turnos = turnos;
     }
 }
+
+

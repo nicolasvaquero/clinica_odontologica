@@ -1,0 +1,3 @@
+[2023-04-02 18:04:17] [ ERROR] [GlobalExceptionHandler:16] Request method 'POST' is not supported
+[2023-04-02 18:04:48] [ ERROR] [GlobalExceptionHandler:16] Request method 'POST' is not supported
+[2023-04-02 18:05:16] [ ERROR] [GlobalExceptionHandler:16] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "p"

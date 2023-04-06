@@ -1,7 +1,7 @@
 package com.dh.clinica_odontologica.controller;
 
 
-import com.dh.clinica_odontologica.entity.TurnoDTO;
+import com.dh.clinica_odontologica.entity.DTO.TurnoDTO;
 import com.dh.clinica_odontologica.service.TurnoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

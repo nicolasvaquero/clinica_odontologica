@@ -1,9 +1,7 @@
 package com.dh.clinica_odontologica.service;
 
-import com.dh.clinica_odontologica.entity.Turno;
-import com.dh.clinica_odontologica.entity.TurnoDTO;
+import com.dh.clinica_odontologica.entity.DTO.TurnoDTO;
 
-import java.util.List;
 import java.util.Set;
 
 

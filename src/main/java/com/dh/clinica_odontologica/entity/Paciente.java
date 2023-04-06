@@ -34,6 +34,12 @@ public class Paciente {
         this.domicilio = domicilio;
     }
 
+    public Paciente(String nombre, String apellido, Integer dni) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+    }
+
     public Long getId() {
         return id;
     }

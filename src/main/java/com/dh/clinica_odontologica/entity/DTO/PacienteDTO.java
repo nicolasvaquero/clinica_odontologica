@@ -1,11 +1,13 @@
-package com.dh.clinica_odontologica.entity;
+package com.dh.clinica_odontologica.entity.DTO;
+
+import com.dh.clinica_odontologica.entity.Domicilio;
 
 public class PacienteDTO {
 
     private Long id;
     private String nombre;
     private String apellido;
-    private String numeroMatricula;
+    private Integer dni;
 
     private Domicilio domicilio;
 
@@ -13,12 +15,27 @@ public class PacienteDTO {
     public PacienteDTO() {
     }
 
-    public PacienteDTO(Long id, String nombre, String apellido, String numeroMatricula, Domicilio domicilio) {
+    public PacienteDTO(Long id, String nombre, String apellido, Integer dni, Domicilio domicilio) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.numeroMatricula = numeroMatricula;
+        this.dni = dni;
         this.domicilio = domicilio;
+    }
+
+    public PacienteDTO(String nombre, String apellido, Integer dni, Domicilio domicilio) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.domicilio = domicilio;
+    }
+
+    public Integer getDni() {
+        return dni;
+    }
+
+    public void setDni(Integer dni) {
+        this.dni = dni;
     }
 
     public Domicilio getDomicilio() {
@@ -53,11 +70,4 @@ public class PacienteDTO {
         this.apellido = apellido;
     }
 
-    public String getNumeroMatricula() {
-        return numeroMatricula;
-    }
-
-    public void setNumeroMatricula(String numeroMatricula) {
-        this.numeroMatricula = numeroMatricula;
-    }
 }

@@ -3,7 +3,7 @@ package com.dh.clinica_odontologica.service;
 
 
 
-import com.dh.clinica_odontologica.entity.PacienteDTO;
+import com.dh.clinica_odontologica.entity.DTO.PacienteDTO;
 
 
 import java.util.Set;

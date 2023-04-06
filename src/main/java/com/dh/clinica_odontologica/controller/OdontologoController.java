@@ -1,6 +1,6 @@
 package com.dh.clinica_odontologica.controller;
 
-import com.dh.clinica_odontologica.entity.OdontologoDTO;
+import com.dh.clinica_odontologica.entity.DTO.OdontologoDTO;
 import com.dh.clinica_odontologica.service.OdontologoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/odontolgos")
+@RequestMapping("/odontologos")
 public class OdontologoController {
     private final OdontologoServiceImpl odontologoService;
     @Autowired

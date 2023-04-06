@@ -1,7 +1,7 @@
 package com.dh.clinica_odontologica.service;
 
 import com.dh.clinica_odontologica.entity.Odontologo;
-import com.dh.clinica_odontologica.entity.OdontologoDTO;
+import com.dh.clinica_odontologica.entity.DTO.OdontologoDTO;
 import com.dh.clinica_odontologica.repository.OdontologoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

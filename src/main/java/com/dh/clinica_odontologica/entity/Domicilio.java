@@ -1,5 +1,6 @@
 package com.dh.clinica_odontologica.entity;
 
+
 import jakarta.persistence.*;
 
 @Entity
@@ -26,6 +27,13 @@ public class Domicilio {
         this.localidad = localidad;
         this.provincia = provincia;
 
+    }
+
+    public Domicilio(String calle, Integer numero, String localidad, String provincia) {
+        this.calle = calle;
+        this.numero = numero;
+        this.localidad = localidad;
+        this.provincia = provincia;
     }
 
     public Long getId() {

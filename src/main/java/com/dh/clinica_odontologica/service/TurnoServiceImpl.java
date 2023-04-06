@@ -1,9 +1,7 @@
 package com.dh.clinica_odontologica.service;
 
-import com.dh.clinica_odontologica.entity.Odontologo;
-import com.dh.clinica_odontologica.entity.OdontologoDTO;
 import com.dh.clinica_odontologica.entity.Turno;
-import com.dh.clinica_odontologica.entity.TurnoDTO;
+import com.dh.clinica_odontologica.entity.DTO.TurnoDTO;
 import com.dh.clinica_odontologica.repository.OdontologoRepository;
 import com.dh.clinica_odontologica.repository.PacienteRepository;
 import com.dh.clinica_odontologica.repository.TurnoRepository;

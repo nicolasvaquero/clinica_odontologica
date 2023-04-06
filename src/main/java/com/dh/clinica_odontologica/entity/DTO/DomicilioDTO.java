@@ -1,6 +1,7 @@
-package com.dh.clinica_odontologica.entity;
+package com.dh.clinica_odontologica.entity.DTO;
 
 
+import com.dh.clinica_odontologica.entity.Paciente;
 
 public class DomicilioDTO {
     private Long id;
