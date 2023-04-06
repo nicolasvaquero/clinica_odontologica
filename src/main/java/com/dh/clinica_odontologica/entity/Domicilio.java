@@ -1,7 +1,7 @@
 package com.dh.clinica_odontologica.entity;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Domicilios")

@@ -1,7 +1,8 @@
 package com.dh.clinica_odontologica.entity;
 
-import jakarta.persistence.*;
 
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
