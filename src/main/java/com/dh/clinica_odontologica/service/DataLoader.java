@@ -22,9 +22,9 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode("password");
+        String hashedPassword = passwordEncoder.encode("nico12");
         BCryptPasswordEncoder passwordEncoder2 = new BCryptPasswordEncoder();
-        String hashedPassword2 = passwordEncoder2.encode("password");
+        String hashedPassword2 = passwordEncoder2.encode("nico12");
         userRepository.save(new AppUser("Diego", "diego", "nico@dh.com", hashedPassword, AppUserRole.ADMIN));
         userRepository.save(new AppUser("Paula", "paula", "nico2@dh.com", hashedPassword2, AppUserRole.USER));
     }
